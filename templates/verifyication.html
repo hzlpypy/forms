@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>验证码</title>
+    <script src="/static/js/jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            $("#verify").click(function () {
+                $("#verifycode").attr('src', $("#verifycode").attr('src') + 1)
+            })
+        })
+    </script>
+</head>
+<body>
+<form action="/verify/judge/" method="post">
+    <img id="verifycode" src="/verify/verifycode/" alt="CheckCode">
+    <div>
+        <input id="verify" type="button" value="看不清,点击刷新">
+    </div>
+
+    <div>
+        <label>请输入验证码<input type="text" name="info"></label>
+    </div>
+    <input type="submit" value="提交">
+
+</form>
+
+</body>
+</html>

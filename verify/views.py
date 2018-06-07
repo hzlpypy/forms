@@ -1,9 +1,11 @@
 from datetime import timedelta
 
+from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
 
+from forms import settings
 from verify import models
 from verify.forms import MessageForm
 
@@ -64,3 +66,13 @@ def logout(request):
     # request.session.set_expiry(None) # 永不过期
     # request.session.flush()
     return redirect(reverse('main:login'))
+
+def email(request):
+    msg = "<div>抠脚倩,点击下面有惊喜</div>" \
+          "<a href='http://xyq.163.com/'>点击进入梦幻世界</a></br>" \
+          "<a href='http://qnm.163.com/#index'>点击进入倩女幽魂</a>" \
+          "<a href='https://user.qzone.qq.com/1761784585?ADUIN=1761784585&ADSESSION=1528351054&ADTAG=CLIENT.QQ.5563_MyTip.0&ADPUBNO=26785&source=namecardhoverstar' target='_blank'>点击来到我的空间<a/>"
+    send_mail('标题','内容','hzl5201314159@163.com',
+              ['yqq520131459@163.com'],
+              html_message=msg)
+    return HttpResponse('OK')

@@ -15,5 +15,6 @@ urlpatterns = [
     url(r'verifycode',verification_code.verifycode),
     url(r'kk',verification_code.kk),
     url(r'judge/',verification_code.judge),
+    url(r'email',views.email)
 
 ]
